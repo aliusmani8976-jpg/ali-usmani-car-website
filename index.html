@@ -1,71 +1,166 @@
-ize: 12px;
-        color: #aaa;
-    }
-</style>
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toyota | Precision Engineering</title>
+    
+    <!-- High-End Racing Fonts & Scroll Animations -->
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com" />
+
+    <style>
+        /* 1. Global Performance Setup */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            color: white; 
+            background: #000; 
+            overflow-x: hidden; 
+        }
+
+        /* 2. Full-Screen Cinematic Video Background */
+        #bg-video {
+            position: fixed; right: 0; bottom: 0;
+            min-width: 100%; min-height: 100%;
+            z-index: -1; object-fit: cover;
+            filter: brightness(0.35) saturate(1.1); /* Darker for elite text contrast */
+        }
+
+        /* 3. Main Dashboard Layout */
+        .hero-section {
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center; min-height: 100vh; padding: 50px 20px;
+        }
+
+        .glass-dashboard {
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(25px); /* Deep frosted glass effect */
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 45px;
+            border: 1px solid rgba(235, 10, 30, 0.4);
+            padding: 70px; max-width: 1150px; text-align: center;
+            box-shadow: 0 0 120px rgba(0, 0, 0, 1);
+        }
+
+        /* 4. Elite Typography */
+        h1 {
+            font-family: 'Racing Sans One', cursive;
+            color: #eb0a1e; /* Official Toyota Racing Red */
+            font-size: 7em; text-transform: uppercase;
+            letter-spacing: 12px; margin-bottom: 5px;
+            text-shadow: 0 0 45px rgba(235, 10, 30, 0.8);
+        }
+
+        .subtitle {
+            font-family: 'Racing Sans One', cursive;
+            font-size: 1.6em; letter-spacing: 5px; color: #ffffff;
+            text-transform: uppercase; margin-bottom: 45px;
+            opacity: 0.9;
+        }
+
+        /* 5. 3D Hover Gallery */
+        .car-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 35px; margin-bottom: 55px;
+        }
+
+        .car-card {
+            position: relative; overflow: hidden; border-radius: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.08); transition: 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .car-card img {
+            width: 100%; height: 300px; object-fit: cover; transition: 0.8s ease;
+        }
+
+        .car-card:hover img {
+            transform: scale(1.12) rotate(1deg); filter: saturate(1.4) brightness(1.1);
+        }
+
+        .car-card:hover {
+            border-color: #eb0a1e; box-shadow: 0 20px 50px rgba(235, 10, 30, 0.5);
+        }
+
+        .label-overlay {
+            position: absolute; bottom: 0; width: 100%;
+            background: linear-gradient(transparent, rgba(235, 10, 30, 0.9));
+            padding: 25px; font-weight: bold; font-size: 1.4em;
+            font-family: 'Racing Sans One', sans-serif;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        /* 6. Glowing Action Buttons */
+        .btn-flex { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        .btn-elite {
+            padding: 20px 50px; background: transparent; color: white;
+            text-decoration: none; font-weight: bold; border: 2.5px solid #eb0a1e;
+            border-radius: 15px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-transform: uppercase; letter-spacing: 3px; font-size: 1.1em;
+        }
+        .btn-elite:hover {
+            background: #eb0a1e; box-shadow: 0 0 40px rgba(235, 10, 30, 1);
+            transform: translateY(-10px) scale(1.08);
+        }
+
+        /* 7. The ALI USMANI Signature Branding */
+        .branding-tag {
+            position: fixed; bottom: 30px; right: 35px;
+            font-family: 'Racing Sans One', cursive;
+            font-size: 20px; color: #eb0a1e;
+            letter-spacing: 5px; text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(235, 10, 30, 0.9);
+            z-index: 1000;
+        }
+    </style>
 </head>
 <body>
-    <div class="content-box">
-        <h1>Toyota Cars</h1>
-        <h2>About Toyota</h2>
-        <p>Toyota is a famous car company from Japan. It makes reliable cars.</p>
-        
-        <h2>Popular Cars</h2>
-        <div class="button-container">
-            <a href="#" class="car-button">Corolla</a>
-            <a href="#" class="car-button">Camry</a>
-            <a href="#" class="car-button">RAV4</a>
-            <a href="#" class="car-button">Prius</a>
+
+    <!-- Cinematic 4K Background Video -->
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="https://assets.mixkit.co" type="video/mp4">
+    </video>
+
+    <div class="hero-section">
+        <!-- The Main Dashboard Interface -->
+        <div class="glass-dashboard" data-aos="zoom-out" data-aos-duration="1500">
+            
+            <h1 data-aos="fade-down" data-aos-delay="300">TOYOTA</h1>
+            <p class="subtitle" data-aos="fade-up" data-aos-delay="500">Uncompromising Reliability • Absolute Power</p>
+
+            <div class="car-grid">
+                <!-- RAV4 Card -->
+                <div class="car-card" data-aos="fade-right" data-aos-delay="700">
+                    <img src="toyota.rav4.jpg" alt="RAV4 Adventure">
+                    <div class="label-overlay">RAV4 ADVENTURE</div>
+                </div>
+
+                <!-- Corolla Card -->
+                <div class="car-card" data-aos="fade-left" data-aos-delay="900">
+                    <img src="toyota.corrolla.jpg" alt="Corolla Performance">
+                    <div class="label-overlay">COROLLA GR SPORT</div>
+                </div>
+            </div>
+
+            <div class="btn-flex">
+                <a href="#" class="btn-elite" data-aos="flip-up" data-aos-delay="1100">Build Your Drive</a>
+                <a href="#" class="btn-elite" data-aos="flip-up" data-aos-delay="1300">Local Inventory</a>
+            </div>
         </div>
     </div>
-img src="toyota.corrolla.jpg">
-<div class="credit">ALI USMANI</div>
-<!-- Section 1: Future and Robots -->
-<h2>Toyota's Robot and Space Future 🤖</h2>
-<p style="font-size: 20px;">
-  Toyota isn't just making cars anymore! They are building a real-life 
-  <strong>"Woven City"</strong> at the foot of Mt. Fuji in Japan where they 
-  test self-driving shuttles called <strong>e-Palettes</strong>. These shuttles 
-  can be mobile shops or even offices! They are even working on a 
-  <strong>Lunar Cruiser</strong> to help astronauts drive on the Moon and 
-  special flying taxis with a company called Joby Aviation.
-</p>
 
-<!-- Section 2: Helping the Earth -->
-<h2>Helping the Earth 🌍</h2>
-<p style="font-size: 20px;">
-  Toyota wants to save the planet. In 1997, they made the <strong>Prius</strong>, 
-  the first-ever mass-produced hybrid car! Since then, their hybrid cars have 
-  saved <strong>77 million tons of CO2</strong> from going into the air. 
-  They also made the <strong>Mirai</strong>, a car that runs on hydrogen 
-  and its only "exhaust" is <strong>pure water</strong>!
-</p>
+    <!-- Designer Signature -->
+    <div class="branding-tag">ALI USMANI</div>
 
-<!-- Section 3: Racing and Speed -->
-<h2>Racing and Fast Cars 🏎️</h2>
-<p style="font-size: 20px;">
-  Did you know Toyota has its own racing team called <strong>GAZOO Racing</strong>? 
-  They make super fast sports cars like the <strong>GR Supra</strong> and 
-  the <strong>GR86</strong>. They have won big races like the 24 Hours of 
-  Le Mans many times. Their cars are so tough that even after 20 years, 
-  <strong>80% of Toyotas</strong> are still driving on the road today!
-</p>
-
-<!-- Section 4: Just for Kids -->
-<h2>Cool Kids' Stuff 🎨</h2>
-<p style="font-size: 20px;">
-  Every year, Toyota holds a <strong>Dream Car Art Contest</strong> where 
-  kids like you draw cars of the future. Some kids draw cars that run on 
-  sweets or cars that can turn into submarines! They even showed off a 
-  concept car called <strong>Kids Mobi</strong>—a tiny self-driving pod 
-  just for kids that has an AI friend to talk to.
-</p>
+    <!-- Initialization of Professional Animations -->
+    <script src="https://unpkg.com"></script>
+    <script>
+      AOS.init({ 
+          once: true,
+          easing: 'ease-out-back'
+      });
+    </script>
 
 </body>
 </html>
-<script src="https://unpkg.com"></script>
-<script>
-  AOS.init({
-    duration: 1000, // Animation takes 1 second
-    once: true      // Only animate the first time you see it
-  });
-</script>
+ 
