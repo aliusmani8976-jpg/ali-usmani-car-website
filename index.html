@@ -1,102 +1,89 @@
-html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toyota | Precision Engineering</title>
+    <title>Toyota Galaxy | 2026 Live Archive</title>
     <link href="https://fonts.googleapis.com" rel="stylesheet">
     <style>
-        :root { --neon-red: #eb0a1e; --dark-bg: #050505; --glass: rgba(255, 255, 255, 0.05); }
+        :root { --t-red: #eb0a1e; --space: #020205; --neon: #00f2ff; --gold: #ffd700; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--dark-bg); color: #fff; font-family: 'Rajdhani', sans-serif; }
+        body { background: var(--space); color: #e0e0e0; font-family: 'Rajdhani', sans-serif; line-height: 1.8; overflow-x: hidden; }
 
-        /* Corner Signature */
-        .signature {
-            position: fixed; top: 20px; right: 20px; z-index: 1000;
-            font-family: 'Orbitron'; font-size: 12px; color: var(--neon-red);
-            padding: 10px 15px; border: 1px solid var(--neon-red);
-            background: rgba(0,0,0,0.8); clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
-        }
+        /* 1. Starfield Background */
+        .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); z-index: -1; }
 
-        /* Hero Section */
-        .hero {
-            height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com') center/cover;
-            text-align: center;
-        }
-        .hero h1 { font-family: 'Orbitron'; font-size: 6vw; color: var(--neon-red); text-shadow: 0 0 20px var(--neon-red); }
+        /* 2. Commander Signature */
+        .signature { position: fixed; top: 20px; right: 20px; z-index: 1000; font-family: 'Orbitron'; font-size: 10px; color: var(--t-red); border: 1px solid var(--t-red); padding: 8px 15px; background: rgba(0,0,0,0.8); box-shadow: 0 0 15px rgba(235, 10, 30, 0.4); letter-spacing: 2px; }
 
-        /* History Section */
-        .history { padding: 60px 10%; background: #0a0a0a; border-bottom: 1px solid #222; }
-        .history h2 { font-family: 'Orbitron'; margin-bottom: 20px; color: var(--neon-red); }
+        /* 3. Live Data Ticker (NEW for 2026) */
+        .ticker-wrap { position: fixed; bottom: 0; width: 100%; background: rgba(235, 10, 30, 0.1); border-top: 1px solid var(--t-red); padding: 5px; z-index: 1000; overflow: hidden; white-space: nowrap; }
+        .ticker { display: inline-block; animation: marquee 30s linear infinite; font-family: 'Orbitron'; font-size: 12px; color: var(--t-red); text-transform: uppercase; }
+        @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-        /* Car Gallery Grid */
-        .gallery { padding: 80px 10%; }
-        .gallery-title { font-family: 'Orbitron'; font-size: 2rem; margin-bottom: 40px; text-align: center; }
-        .car-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        
-        .car-card { 
-            background: var(--glass); border-radius: 15px; overflow: hidden; 
-            border: 1px solid rgba(255,255,255,0.1); transition: 0.4s;
-        }
-        .car-card:hover { transform: translateY(-10px); border-color: var(--neon-red); box-shadow: 0 10px 30px rgba(235, 10, 30, 0.2); }
-        
-        /* The Images */
-        .car-image { width: 100%; height: 250px; object-fit: cover; border-bottom: 2px solid var(--neon-red); }
-        
-        .car-info { padding: 20px; }
-        .car-info h3 { font-family: 'Orbitron'; font-size: 1.5rem; margin-bottom: 10px; }
-        .car-info p { color: #aaa; line-height: 1.6; }
+        /* 4. Hero Section */
+        .hero { height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .hero h1 { font-family: 'Orbitron'; font-size: 7vw; letter-spacing: 15px; text-shadow: 0 0 30px var(--t-red); color: #fff; }
+        .update-badge { background: var(--gold); color: #000; padding: 2px 10px; font-family: 'Orbitron'; font-size: 10px; font-weight: 900; border-radius: 3px; margin-bottom: 10px; }
+
+        /* 5. Info Blocks */
+        .content-wrap { max-width: 1000px; margin: 0 auto; padding: 50px 20px; }
+        .info-block { margin-bottom: 60px; padding: 40px; background: rgba(255,255,255,0.02); border-radius: 15px; border-left: 2px solid var(--t-red); transition: 0.3s; }
+        .info-block:hover { background: rgba(255,255,255,0.05); border-left-color: var(--neon); }
+        h2 { font-family: 'Orbitron'; color: var(--t-red); margin-bottom: 20px; font-size: 1.8rem; }
+        p { margin-bottom: 20px; font-size: 1.15rem; color: #ccc; text-align: justify; }
+        .highlight { color: var(--neon); font-weight: 700; }
     </style>
 </head>
 <body>
 
-    <div class="signature">ENGINEER: ALI USMANI</div>
+    <div class="stars"></div>
+    <div class="signature">COMMANDER: ALI USMANI</div>
+
+    <!-- Live 2026 Ticker -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            LIVE FEED [FEB 2026]: Toyota records 10.5M sales for 2025 // Woven City public tours begin next month // GR Supra "Final Edition" limited to 1,300 units // Solid-state battery testing enters final phase //
+        </div>
+    </div>
 
     <section class="hero">
-        <h1>TOYOTA</h1>
-        <p style="letter-spacing: 5px;">PUSHING THE LIMITS OF POSSIBILITY</p>
+        <div class="update-badge">FEB 2026 STATUS: ACTIVE</div>
+        <h1>GALAXY</h1>
+        <p style="letter-spacing: 5px; color: #888;">THE TOYOTA 2026 STRATEGIC ARCHIVE</p>
     </section>
 
-    <section class="history">
-        <h2>OUR HERITAGE</h2>
-        <p>Founded in 1937 by Kiichiro Toyoda, Toyota has grown from a loom manufacturer to the world's leading automotive innovator. From the legendary 2000GT to the world-changing Prius, we define the future of mobility.</p>
-    </section>
+    <div class="content-wrap">
 
-    <section class="gallery">
-        <h2 class="gallery-title">// CURRENT LINEUP</h2>
-        <div class="car-grid">
-            
-            <!-- Car 1: Supra -->
-            <div class="car-card">
-                <img src="https://images.unsplash.com" alt="Toyota GR Supra" class="car-image">
-                <div class="car-info">
-                    <h3>GR SUPRA</h3>
-                    <p>A legend returned. Designed for pure driving pleasure with a 3.0L twin-scroll turbocharged engine.</p>
-                </div>
-            </div>
-
-            <!-- Car 2: Land Cruiser -->
-            <div class="car-card">
-                <img src="https://images.unsplash.com" alt="Toyota Land Cruiser" class="car-image">
-                <div class="car-info">
-                    <h3>LAND CRUISER</h3>
-                    <p>The king of off-road. Built to withstand the world's harshest environments with legendary reliability.</p>
-                </div>
-            </div>
-
-            <!-- Car 3: Camry -->
-            <div class="car-card">
-                <img src="https://images.unsplash.com" alt="Toyota Camry" class="car-image">
-                <div class="car-info">
-                    <h3>CAMRY XSE</h3>
-                    <p>Sophisticated style meets hybrid efficiency. The gold standard for mid-size sedans globally.</p>
-                </div>
-            </div>
-
+        <div class="info-block">
+            <h2>01 // 2026 WOVEN CITY LAUNCH</h2>
+            <p>As of <span class="highlight">February 2026</span>, Toyota has officially opened the gates of <span class="highlight">Woven City</span> to general visitors. After the first "Weavers" (employees and families) moved in during late 2025, the city has become a living laboratory for 2,000 residents. Every home is powered by a localized hydrogen fuel cell grid, and the streets are divided into three distinct paths: one for fast vehicles, one for micromobility (e-scooters), and one for pedestrians. This is no longer a concept—it is a functioning 175-acre smart city at the base of Mt. Fuji.</p>
         </div>
-    </section>
+
+        <div class="info-block">
+            <h2>02 // THE SUPRA "FINAL EDITION"</h2>
+            <p>Enthusiasts around the world are currently tracking the <span class="highlight">2026 GR Supra MkV Final Edition</span>. Toyota has confirmed that 2026 will be the final production year for the current Supra generation. This special send-off model features a carbon-fiber ducktail spoiler, 19-inch matte black wheels, and a suspension re-tuned specifically for track-day grip. Only <span class="highlight">1,300 units</span> are being produced globally, marking the end of an era for the BMW-partnered sports icon.</p>
+        </div>
+
+        <div class="info-block">
+            <h2>03 // 2025 SALES RECORDS</h2>
+            <p>In data released in <span class="highlight">January 2026</span>, Toyota maintained its crown as the world's top-selling automaker for the sixth year in a row. Despite global economic shifts and new tariffs, Toyota sold a record-breaking <span class="highlight">10.5 million vehicles</span> in 2025. Hybrid demand in the United States, specifically for the RAV4 and Prius, drove this massive growth. For 2026, Toyota has notified suppliers to prepare for production exceeding 10 million units once again.</p>
+        </div>
+
+        <div class="info-block">
+            <h2>04 // THE NEXT-GEN BATTERY ROADMAP</h2>
+            <p>Toyota is currently in the "Phase 2" implementation of its battery roadmap. By the end of 2026, Toyota aims to reveal six new battery-electric (BEV) models. The big goal remains the <span class="highlight">Solid-State Battery</span>, which is scheduled for commercial use by 2027/28. These batteries are expected to provide over <span class="highlight">620 miles of range</span> and charge from 10% to 80% in less than 10 minutes.</p>
+        </div>
+
+    </div>
+
+    <script>
+        // Parallax Stars
+        window.addEventListener('scroll', function() {
+            const scroll = window.pageYOffset;
+            document.querySelector('.stars').style.backgroundPositionY = -(scroll * 0.3) + 'px';
+        });
+    </script>
 
 </body>
 </html>
