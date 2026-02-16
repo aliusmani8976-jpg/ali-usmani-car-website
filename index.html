@@ -3,139 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toyota | Precision Engineering</title>
+    <title>Toyota | The Ultimate Experience</title>
     <link href="https://fonts.googleapis.com" rel="stylesheet">
     <style>
-        :root {
-            --toyota-red: #eb0a1e;
-            --dark-bg: #050505;
-            --glass: rgba(255, 255, 255, 0.05);
-        }
-
-        body {
-            margin: 0;
-            background-color: var(--dark-bg);
-            color: white;
-            font-family: 'Rajdhani', sans-serif;
-            overflow-x: hidden;
-        }
-
-        /* Hero Section */
+        :root { --red: #eb0a1e; --dark: #0a0a0a; --gray: #1a1a1a; --text: #e0e0e0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--dark); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
+        
+        /* Cinematic Hero */
         header {
             height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com');
-            background-size: cover;
-            background-position: center;
-            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.6), var(--dark)), url('https://images.unsplash.com');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
         }
+        h1 { font-family: 'Syncopate', sans-serif; font-size: 5rem; letter-spacing: 15px; color: white; margin: 0; }
+        .hero-sub { font-size: 1.2rem; letter-spacing: 8px; color: var(--red); text-transform: uppercase; margin-top: 10px; }
 
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 5rem;
-            letter-spacing: 10px;
-            margin: 0;
-            text-transform: uppercase;
-            text-shadow: 0 0 20px var(--toyota-red);
-        }
+        /* Information Sections */
+        .section-title { text-align: center; padding: 80px 0 40px; font-family: 'Syncopate', sans-serif; color: white; font-size: 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        .tagline { font-size: 1.5rem; color: #ccc; margin-bottom: 30px; }
+        /* Detailed Model Cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .card { background: var(--gray); border-radius: 20px; padding: 30px; border-left: 4px solid var(--red); transition: 0.3s; }
+        .card:hover { transform: scale(1.02); background: #222; }
+        .card img { width: 100%; border-radius: 10px; margin-bottom: 20px; height: 200px; object-fit: cover; }
+        
+        .spec-list { margin: 20px 0; list-style: none; border-top: 1px solid #333; padding-top: 15px; }
+        .spec-list li { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 8px; }
+        .spec-list b { color: var(--red); }
 
-        /* Cool Buttons */
-        .btn {
-            padding: 15px 40px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
-            text-decoration: none;
-            color: white;
-            border: 2px solid var(--toyota-red);
-            background: transparent;
-            transition: 0.4s;
-            cursor: pointer;
-            text-transform: uppercase;
-            position: relative;
-            overflow: hidden;
-        }
+        /* Brand History Table */
+        table { width: 100%; border-collapse: collapse; margin: 40px 0; background: var(--gray); border-radius: 15px; overflow: hidden; }
+        th, td { padding: 20px; text-align: left; border-bottom: 1px solid #333; }
+        th { background-color: var(--red); color: white; font-family: 'Syncopate', sans-serif; font-size: 0.8rem; }
 
-        .btn:hover {
-            background: var(--toyota-red);
-            box-shadow: 0 0 30px var(--toyota-red);
-        }
+        /* Interactive Buttons */
+        .btn { display: block; text-align: center; padding: 15px; background: transparent; border: 1px solid var(--red); color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: 0.3s; text-transform: uppercase; }
+        .btn:hover { background: var(--red); box-shadow: 0 0 20px var(--red); }
 
-        /* Car Models Grid */
-        .container {
-            padding: 100px 5%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 20px;
-            transition: transform 0.3s;
-            text-align: center;
-        }
-
-        .card:hover {
-            transform: translateY(-15px);
-            border-color: var(--toyota-red);
-        }
-
-        .card img {
-            width: 100%;
-            border-radius: 15px;
-            margin-bottom: 20px;
-        }
-
-        .card h3 { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; margin: 10px 0; }
-        .card p { color: #aaa; line-height: 1.6; }
-
+        footer { text-align: center; padding: 50px; color: #555; font-size: 0.8rem; border-top: 1px solid #222; margin-top: 100px; }
     </style>
 </head>
 <body>
 
     <header>
-        <h1 data-aos="fade-up">TOYOTA</h1>
-        <p class="tagline">Pushing the boundaries of Precision Engineering</p>
-        <div class="button-group">
-            <a href="#models" class="btn">Explore Lineup</a>
-            <a href="#" class="btn" style="border-color: white; margin-left: 20px;">Build Your Own</a>
-        </div>
+        <h1>TOYOTA</h1>
+        <p class="hero-sub">Precision Engineering & Innovation</p>
     </header>
 
-    <section class="container" id="models">
-        <!-- Supra Card -->
-        <div class="card">
-            <img src="https://images.unsplash.com" alt="Supra">
-            <h3>GR SUPRA</h3>
-            <p>The legend returns with a 3.0L Twin-Scroll Turbo Engine, delivering pure racing DNA to the streets.</p>
-            <button class="btn" style="padding: 10px 20px; font-size: 0.8rem; margin-top: 15px;">Specs</button>
+    <div class="container">
+        
+        <h2 class="section-title">2025 Performance Lineup</h2>
+        <div class="grid">
+            <!-- GR Supra -->
+            <div class="card">
+                <img src="https://images.unsplash.com">
+                <h3>GR SUPRA</h3>
+                <p>Designed for pure driving pleasure, the Supra is a masterpiece of balance and power.</p>
+                <ul class="spec-list">
+                    <li><span>Engine</span> <b>3.0L Turbo 6-Cyl</b></li>
+                    <li><span>Horsepower</span> <b>382 HP</b></li>
+                    <li><span>Top Speed</span> <b>155 MPH</b></li>
+                    <li><span>Drive</span> <b>RWD</b></li>
+                </ul>
+                <a href="#" class="btn">View Inventory</a>
+            </div>
+
+            <!-- Land Cruiser -->
+            <div class="card">
+                <img src="https://images.unsplash.com">
+                <h3>LAND CRUISER</h3>
+                <p>The legendary off-roader returns with hybrid power and vintage styling.</p>
+                <ul class="spec-list">
+                    <li><span>Engine</span> <b>i-FORCE MAX Hybrid</b></li>
+                    <li><span>Torque</span> <b>465 lb-ft</b></li>
+                    <li><span>Towing</span> <b>6,000 lbs</b></li>
+                    <li><span>Drive</span> <b>Full-Time 4WD</b></li>
+                </ul>
+                <a href="#" class="btn">Go Off-Road</a>
+            </div>
         </div>
 
-        <!-- Land Cruiser Card -->
-        <div class="card">
-            <img src="https://images.unsplash.com" alt="Land Cruiser">
-            <h3>LAND CRUISER</h3>
-            <p>The king of off-road. Unmatched durability meets modern luxury for the ultimate adventure.</p>
-            <button class="btn" style="padding: 10px 20px; font-size: 0.8rem; margin-top: 15px;">Explore</button>
+        <h2 class="section-title">Historical Innovation</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Milestone</th>
+                    <th>Impact</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1937</td>
+                    <td>Toyota Motor Co. Founded</td>
+                    <td>Birth of a global automotive giant.</td>
+                </tr>
+                <tr>
+                    <td>1966</td>
+                    <td>Corolla Launch</td>
+                    <td>Became the best-selling car in history.</td>
+                </tr>
+                <tr>
+                    <td>1997</td>
+                    <td>Prius Introduction</td>
+                    <td>World's first mass-produced hybrid.</td>
+                </tr>
+                <tr>
+                    <td>2024</td>
+                    <td>Hydrogen Racing</td>
+                    <td>Pioneering zero-emission liquid hydrogen engines.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="section-title">Why Toyota?</h2>
+        <div style="background: var(--red); padding: 40px; border-radius: 20px; color: white;">
+            <p><b>QDR: Quality, Durability, and Reliability.</b> For over 80 years, Toyota has focused on the "Kaizen" philosophy—continuous improvement. From the assembly line to the race track, every weld and every wire is engineered to last a lifetime.</p>
         </div>
 
-        <!-- GR Yaris Card -->
-        <div class="card">
-            <img src="https://images.unsplash.com" alt="GR Yaris">
-            <h3>GR YARIS</h3>
-            <p>Born from WRC. A rally car for the road with the world's most powerful 3-cylinder engine.</p>
-            <button class="btn" style="padding: 10px 20px; font-size: 0.8rem; margin-top: 15px;">Details</button>
-        </div>
-    </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Developed by aliusmani8976 | Toyota Precision Project</p>
+    </footer>
 
 </body>
 </html>
