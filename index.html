@@ -3,132 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toyota | The Ultimate Experience</title>
+    <title>Toyota | Precision Engineering</title>
     <link href="https://fonts.googleapis.com" rel="stylesheet">
     <style>
-        :root { --red: #eb0a1e; --dark: #0a0a0a; --gray: #1a1a1a; --text: #e0e0e0; }
+        :root { --neon-red: #eb0a1e; --dark-bg: #050505; --glass: rgba(255, 255, 255, 0.05); }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--dark); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
-        
-        /* Cinematic Hero */
-        header {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), var(--dark)), url('https://images.unsplash.com');
-            background-size: cover; background-position: center;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+        body { background-color: var(--dark-bg); color: #fff; font-family: 'Rajdhani', sans-serif; }
+
+        /* Corner Signature */
+        .signature {
+            position: fixed; top: 20px; right: 20px; z-index: 1000;
+            font-family: 'Orbitron'; font-size: 12px; color: var(--neon-red);
+            padding: 10px 15px; border: 1px solid var(--neon-red);
+            background: rgba(0,0,0,0.8); clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
         }
-        h1 { font-family: 'Syncopate', sans-serif; font-size: 5rem; letter-spacing: 15px; color: white; margin: 0; }
-        .hero-sub { font-size: 1.2rem; letter-spacing: 8px; color: var(--red); text-transform: uppercase; margin-top: 10px; }
 
-        /* Information Sections */
-        .section-title { text-align: center; padding: 80px 0 40px; font-family: 'Syncopate', sans-serif; color: white; font-size: 2rem; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        /* Hero Section */
+        .hero {
+            height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com') center/cover;
+            text-align: center;
+        }
+        .hero h1 { font-family: 'Orbitron'; font-size: 6vw; color: var(--neon-red); text-shadow: 0 0 20px var(--neon-red); }
 
-        /* Detailed Model Cards */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        .card { background: var(--gray); border-radius: 20px; padding: 30px; border-left: 4px solid var(--red); transition: 0.3s; }
-        .card:hover { transform: scale(1.02); background: #222; }
-        .card img { width: 100%; border-radius: 10px; margin-bottom: 20px; height: 200px; object-fit: cover; }
+        /* History Section */
+        .history { padding: 60px 10%; background: #0a0a0a; border-bottom: 1px solid #222; }
+        .history h2 { font-family: 'Orbitron'; margin-bottom: 20px; color: var(--neon-red); }
+
+        /* Car Gallery Grid */
+        .gallery { padding: 80px 10%; }
+        .gallery-title { font-family: 'Orbitron'; font-size: 2rem; margin-bottom: 40px; text-align: center; }
+        .car-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         
-        .spec-list { margin: 20px 0; list-style: none; border-top: 1px solid #333; padding-top: 15px; }
-        .spec-list li { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 8px; }
-        .spec-list b { color: var(--red); }
-
-        /* Brand History Table */
-        table { width: 100%; border-collapse: collapse; margin: 40px 0; background: var(--gray); border-radius: 15px; overflow: hidden; }
-        th, td { padding: 20px; text-align: left; border-bottom: 1px solid #333; }
-        th { background-color: var(--red); color: white; font-family: 'Syncopate', sans-serif; font-size: 0.8rem; }
-
-        /* Interactive Buttons */
-        .btn { display: block; text-align: center; padding: 15px; background: transparent; border: 1px solid var(--red); color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: 0.3s; text-transform: uppercase; }
-        .btn:hover { background: var(--red); box-shadow: 0 0 20px var(--red); }
-
-        footer { text-align: center; padding: 50px; color: #555; font-size: 0.8rem; border-top: 1px solid #222; margin-top: 100px; }
+        .car-card { 
+            background: var(--glass); border-radius: 15px; overflow: hidden; 
+            border: 1px solid rgba(255,255,255,0.1); transition: 0.4s;
+        }
+        .car-card:hover { transform: translateY(-10px); border-color: var(--neon-red); box-shadow: 0 10px 30px rgba(235, 10, 30, 0.2); }
+        
+        /* The Images */
+        .car-image { width: 100%; height: 250px; object-fit: cover; border-bottom: 2px solid var(--neon-red); }
+        
+        .car-info { padding: 20px; }
+        .car-info h3 { font-family: 'Orbitron'; font-size: 1.5rem; margin-bottom: 10px; }
+        .car-info p { color: #aaa; line-height: 1.6; }
     </style>
 </head>
 <body>
 
-    <header>
+    <div class="signature">ENGINEER: ALI USMANI</div>
+
+    <section class="hero">
         <h1>TOYOTA</h1>
-        <p class="hero-sub">Precision Engineering & Innovation</p>
-    </header>
+        <p style="letter-spacing: 5px;">PUSHING THE LIMITS OF POSSIBILITY</p>
+    </section>
 
-    <div class="container">
-        
-        <h2 class="section-title">2025 Performance Lineup</h2>
-        <div class="grid">
-            <!-- GR Supra -->
-            <div class="card">
-                <img src="https://images.unsplash.com">
-                <h3>GR SUPRA</h3>
-                <p>Designed for pure driving pleasure, the Supra is a masterpiece of balance and power.</p>
-                <ul class="spec-list">
-                    <li><span>Engine</span> <b>3.0L Turbo 6-Cyl</b></li>
-                    <li><span>Horsepower</span> <b>382 HP</b></li>
-                    <li><span>Top Speed</span> <b>155 MPH</b></li>
-                    <li><span>Drive</span> <b>RWD</b></li>
-                </ul>
-                <a href="#" class="btn">View Inventory</a>
+    <section class="history">
+        <h2>OUR HERITAGE</h2>
+        <p>Founded in 1937 by Kiichiro Toyoda, Toyota has grown from a loom manufacturer to the world's leading automotive innovator. From the legendary 2000GT to the world-changing Prius, we define the future of mobility.</p>
+    </section>
+
+    <section class="gallery">
+        <h2 class="gallery-title">// CURRENT LINEUP</h2>
+        <div class="car-grid">
+            
+            <!-- Car 1: Supra -->
+            <div class="car-card">
+                <img src="https://images.unsplash.com" alt="Toyota GR Supra" class="car-image">
+                <div class="car-info">
+                    <h3>GR SUPRA</h3>
+                    <p>A legend returned. Designed for pure driving pleasure with a 3.0L twin-scroll turbocharged engine.</p>
+                </div>
             </div>
 
-            <!-- Land Cruiser -->
-            <div class="card">
-                <img src="https://images.unsplash.com">
-                <h3>LAND CRUISER</h3>
-                <p>The legendary off-roader returns with hybrid power and vintage styling.</p>
-                <ul class="spec-list">
-                    <li><span>Engine</span> <b>i-FORCE MAX Hybrid</b></li>
-                    <li><span>Torque</span> <b>465 lb-ft</b></li>
-                    <li><span>Towing</span> <b>6,000 lbs</b></li>
-                    <li><span>Drive</span> <b>Full-Time 4WD</b></li>
-                </ul>
-                <a href="#" class="btn">Go Off-Road</a>
+            <!-- Car 2: Land Cruiser -->
+            <div class="car-card">
+                <img src="https://images.unsplash.com" alt="Toyota Land Cruiser" class="car-image">
+                <div class="car-info">
+                    <h3>LAND CRUISER</h3>
+                    <p>The king of off-road. Built to withstand the world's harshest environments with legendary reliability.</p>
+                </div>
             </div>
+
+            <!-- Car 3: Camry -->
+            <div class="car-card">
+                <img src="https://images.unsplash.com" alt="Toyota Camry" class="car-image">
+                <div class="car-info">
+                    <h3>CAMRY XSE</h3>
+                    <p>Sophisticated style meets hybrid efficiency. The gold standard for mid-size sedans globally.</p>
+                </div>
+            </div>
+
         </div>
-
-        <h2 class="section-title">Historical Innovation</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Year</th>
-                    <th>Milestone</th>
-                    <th>Impact</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1937</td>
-                    <td>Toyota Motor Co. Founded</td>
-                    <td>Birth of a global automotive giant.</td>
-                </tr>
-                <tr>
-                    <td>1966</td>
-                    <td>Corolla Launch</td>
-                    <td>Became the best-selling car in history.</td>
-                </tr>
-                <tr>
-                    <td>1997</td>
-                    <td>Prius Introduction</td>
-                    <td>World's first mass-produced hybrid.</td>
-                </tr>
-                <tr>
-                    <td>2024</td>
-                    <td>Hydrogen Racing</td>
-                    <td>Pioneering zero-emission liquid hydrogen engines.</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2 class="section-title">Why Toyota?</h2>
-        <div style="background: var(--red); padding: 40px; border-radius: 20px; color: white;">
-            <p><b>QDR: Quality, Durability, and Reliability.</b> For over 80 years, Toyota has focused on the "Kaizen" philosophy—continuous improvement. From the assembly line to the race track, every weld and every wire is engineered to last a lifetime.</p>
-        </div>
-
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Developed by aliusmani8976 | Toyota Precision Project</p>
-    </footer>
+    </section>
 
 </body>
 </html>
