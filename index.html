@@ -2,6 +2,8 @@ E html>
 <html>
 <head>
 <title>Toyota Cars</title>
+<link rel="stylesheet" href="https://unpkg.com" />
+
 <link href="https://fonts.googleapis.com" rel="stylesheet">
 <style>
     body {
@@ -15,12 +17,12 @@ E html>
         margin: 0;
         padding: 40px;
         text-align: center;
-    }
-
+    <h1 data-aos="fade-down">Toyota Cars</h1>
     h1, h2 {
         font-family: 'Racing Sans One', cursive; /* Sporty racing font */
         color: #eb0a1e; /* Toyota Red */
-        text-transform: uppercase;
+        <h2 data-aos="fade-right">About Toyota</h2>
+        <p data-aos="fade-left">Toyota is a famous car company...</p>
         text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
         font-size: 3em;
     }
@@ -126,3 +128,10 @@ img src="toyota.corrolla.jpg">
 
 </body>
 </html>
+<script src="https://unpkg.com"></script>
+<script>
+  AOS.init({
+    duration: 1000, // Animation takes 1 second
+    once: true      // Only animate the first time you see it
+  });
+</script>
