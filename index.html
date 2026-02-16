@@ -1,165 +1,141 @@
-"en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toyota | Precision Engineering</title>
-    
-    <!-- High-End Racing Fonts & Scroll Animations -->
     <link href="https://fonts.googleapis.com" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com" />
-
     <style>
-        /* 1. Global Performance Setup */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            color: white; 
-            background: #000; 
-            overflow-x: hidden; 
+        :root {
+            --toyota-red: #eb0a1e;
+            --dark-bg: #050505;
+            --glass: rgba(255, 255, 255, 0.05);
         }
 
-        /* 2. Full-Screen Cinematic Video Background */
-        #bg-video {
-            position: fixed; right: 0; bottom: 0;
-            min-width: 100%; min-height: 100%;
-            z-index: -1; object-fit: cover;
-            filter: brightness(0.35) saturate(1.1); /* Darker for elite text contrast */
+        body {
+            margin: 0;
+            background-color: var(--dark-bg);
+            color: white;
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
         }
 
-        /* 3. Main Dashboard Layout */
-        .hero-section {
-            display: flex; flex-direction: column; align-items: center;
-            justify-content: center; min-height: 100vh; padding: 50px 20px;
+        /* Hero Section */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
         }
 
-        .glass-dashboard {
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(25px); /* Deep frosted glass effect */
-            -webkit-backdrop-filter: blur(25px);
-            border-radius: 45px;
-            border: 1px solid rgba(235, 10, 30, 0.4);
-            padding: 70px; max-width: 1150px; text-align: center;
-            box-shadow: 0 0 120px rgba(0, 0, 0, 1);
-        }
-
-        /* 4. Elite Typography */
         h1 {
-            font-family: 'Racing Sans One', cursive;
-            color: #eb0a1e; /* Official Toyota Racing Red */
-            font-size: 7em; text-transform: uppercase;
-            letter-spacing: 12px; margin-bottom: 5px;
-            text-shadow: 0 0 45px rgba(235, 10, 30, 0.8);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            letter-spacing: 10px;
+            margin: 0;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px var(--toyota-red);
         }
 
-        .subtitle {
-            font-family: 'Racing Sans One', cursive;
-            font-size: 1.6em; letter-spacing: 5px; color: #ffffff;
-            text-transform: uppercase; margin-bottom: 45px;
-            opacity: 0.9;
+        .tagline { font-size: 1.5rem; color: #ccc; margin-bottom: 30px; }
+
+        /* Cool Buttons */
+        .btn {
+            padding: 15px 40px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            text-decoration: none;
+            color: white;
+            border: 2px solid var(--toyota-red);
+            background: transparent;
+            transition: 0.4s;
+            cursor: pointer;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* 5. 3D Hover Gallery */
-        .car-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 35px; margin-bottom: 55px;
+        .btn:hover {
+            background: var(--toyota-red);
+            box-shadow: 0 0 30px var(--toyota-red);
         }
 
-        .car-card {
-            position: relative; overflow: hidden; border-radius: 25px;
-            border: 2px solid rgba(255, 255, 255, 0.08); transition: 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+        /* Car Models Grid */
+        .container {
+            padding: 100px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
-        .car-card img {
-            width: 100%; height: 300px; object-fit: cover; transition: 0.8s ease;
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 20px;
+            transition: transform 0.3s;
+            text-align: center;
         }
 
-        .car-card:hover img {
-            transform: scale(1.12) rotate(1deg); filter: saturate(1.4) brightness(1.1);
+        .card:hover {
+            transform: translateY(-15px);
+            border-color: var(--toyota-red);
         }
 
-        .car-card:hover {
-            border-color: #eb0a1e; box-shadow: 0 20px 50px rgba(235, 10, 30, 0.5);
+        .card img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 20px;
         }
 
-        .label-overlay {
-            position: absolute; bottom: 0; width: 100%;
-            background: linear-gradient(transparent, rgba(235, 10, 30, 0.9));
-            padding: 25px; font-weight: bold; font-size: 1.4em;
-            font-family: 'Racing Sans One', sans-serif;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-        }
+        .card h3 { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; margin: 10px 0; }
+        .card p { color: #aaa; line-height: 1.6; }
 
-        /* 6. Glowing Action Buttons */
-        .btn-flex { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
-        .btn-elite {
-            padding: 20px 50px; background: transparent; color: white;
-            text-decoration: none; font-weight: bold; border: 2.5px solid #eb0a1e;
-            border-radius: 15px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-transform: uppercase; letter-spacing: 3px; font-size: 1.1em;
-        }
-        .btn-elite:hover {
-            background: #eb0a1e; box-shadow: 0 0 40px rgba(235, 10, 30, 1);
-            transform: translateY(-10px) scale(1.08);
-        }
-
-        /* 7. The ALI USMANI Signature Branding */
-        .branding-tag {
-            position: fixed; bottom: 30px; right: 35px;
-            font-family: 'Racing Sans One', cursive;
-            font-size: 20px; color: #eb0a1e;
-            letter-spacing: 5px; text-transform: uppercase;
-            text-shadow: 0 0 20px rgba(235, 10, 30, 0.9);
-            z-index: 1000;
-        }
     </style>
 </head>
 <body>
 
-    <!-- Cinematic 4K Background Video -->
-    <video autoplay muted loop playsinline id="bg-video">
-        <source src="https://assets.mixkit.co" type="video/mp4">
-    </video>
-
-    <div class="hero-section">
-        <!-- The Main Dashboard Interface -->
-        <div class="glass-dashboard" data-aos="zoom-out" data-aos-duration="1500">
-            
-            <h1 data-aos="fade-down" data-aos-delay="300">TOYOTA</h1>
-            <p class="subtitle" data-aos="fade-up" data-aos-delay="500">Uncompromising Reliability • Absolute Power</p>
-
-            <div class="car-grid">
-                <!-- RAV4 Card -->
-                <div class="car-card" data-aos="fade-right" data-aos-delay="700">
-                    <img src="toyota.rav4.jpg" alt="RAV4 Adventure">
-                    <div class="label-overlay">RAV4 ADVENTURE</div>
-                </div>
-
-                <!-- Corolla Card -->
-                <div class="car-card" data-aos="fade-left" data-aos-delay="900">
-                    <img src="toyota.corrolla.jpg" alt="Corolla Performance">
-                    <div class="label-overlay">COROLLA GR SPORT</div>
-                </div>
-            </div>
-
-            <div class="btn-flex">
-                <a href="#" class="btn-elite" data-aos="flip-up" data-aos-delay="1100">Build Your Drive</a>
-                <a href="#" class="btn-elite" data-aos="flip-up" data-aos-delay="1300">Local Inventory</a>
-            </div>
+    <header>
+        <h1 data-aos="fade-up">TOYOTA</h1>
+        <p class="tagline">Pushing the boundaries of Precision Engineering</p>
+        <div class="button-group">
+            <a href="#models" class="btn">Explore Lineup</a>
+            <a href="#" class="btn" style="border-color: white; margin-left: 20px;">Build Your Own</a>
         </div>
-    </div>
+    </header>
 
-    <!-- Designer Signature -->
-    <div class="branding-tag">ALI USMANI</div>
+    <section class="container" id="models">
+        <!-- Supra Card -->
+        <div class="card">
+            <img src="https://images.unsplash.com" alt="Supra">
+            <h3>GR SUPRA</h3>
+            <p>The legend returns with a 3.0L Twin-Scroll Turbo Engine, delivering pure racing DNA to the streets.</p>
+            <button class="btn" style="padding: 10px 20px; font-size: 0.8rem; margin-top: 15px;">Specs</button>
+        </div>
 
-    <!-- Initialization of Professional Animations -->
-    <script src="https://unpkg.com"></script>
-    <script>
-      AOS.init({ 
-          once: true,
-          easing: 'ease-out-back'
-      });
-    </script>
+        <!-- Land Cruiser Card -->
+        <div class="card">
+            <img src="https://images.unsplash.com" alt="Land Cruiser">
+            <h3>LAND CRUISER</h3>
+            <p>The king of off-road. Unmatched durability meets modern luxury for the ultimate adventure.</p>
+            <button class="btn" style="padding: 10px 20px; font-size: 0.8rem; margin-top: 15px;">Explore</button>
+        </div>
+
+        <!-- GR Yaris Card -->
+        <div class="card">
+            <img src="https://images.unsplash.com" alt="GR Yaris">
+            <h3>GR YARIS</h3>
+            <p>Born from WRC. A rally car for the road with the world's most powerful 3-cylinder engine.</p>
+            <button class="btn" style="padding: 10px 20px; font-size: 0.8rem; margin-top: 15px;">Details</button>
+        </div>
+    </section>
 
 </body>
 </html>
- 
