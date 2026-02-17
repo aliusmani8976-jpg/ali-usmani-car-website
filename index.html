@@ -1,37 +1,841 @@
-px; color: #888;">THE TOYOTA 2026 STRATEGIC ARCHIVE</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toyota Universe | Beyond Innovation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0d1235 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Stars Background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: var(--opacity); transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Nebula Effects */
+        .nebula {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            z-index: 0;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .nebula-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #4a00e0, #8e2de2);
+            top: -200px;
+            right: -200px;
+        }
+
+        .nebula-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #00d2ff, #3a7bd5);
+            bottom: -150px;
+            left: -150px;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #eb0a1e, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #00d2ff;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            padding: 100px 5%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #00d2ff, #3a7bd5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(0, 210, 255, 0.5)); }
+            to { filter: drop-shadow(0 0 30px rgba(0, 210, 255, 0.8)); }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #a0aec0;
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #eb0a1e, #ff6b6b);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(235, 10, 30, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(235, 10, 30, 0.6);
+        }
+
+        .rev-button {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .rev-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.6);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 5%;
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* History Section */
+        .history-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .history-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #d1d5db;
+        }
+
+        .history-text h3 {
+            color: #00d2ff;
+            margin: 20px 0 10px;
+            font-size: 1.5rem;
+        }
+
+        .history-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .history-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .history-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Models Grid */
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .model-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .model-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 210, 255, 0.3);
+            border-color: rgba(0, 210, 255, 0.5);
+        }
+
+        .model-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .model-info {
+            padding: 25px;
+        }
+
+        .model-info h3 {
+            color: #00d2ff;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .model-info p {
+            color: #9ca3af;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .specs {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .spec {
+            background: rgba(0, 210, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #00d2ff;
+        }
+
+        /* Technology Section */
+        .tech-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .tech-card {
+            background: linear-gradient(135deg, rgba(235, 10, 30, 0.2), rgba(142, 45, 226, 0.2));
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .tech-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(235, 10, 30, 0.3);
+        }
+
+        .tech-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .tech-card h3 {
+            color: #ff6b6b;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 14, 39, 0.95);
+            padding: 40px 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: #ffffff;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #00d2ff;
+            transform: translateY(-5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .history-content { grid-template-columns: 1fr; }
+            .tech-container { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0e27;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            border-radius: 5px;
+        }
+
+        /* Audio Visualizer */
+        .audio-visualizer {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            margin: 20px 0;
+        }
+
+        .bar {
+            width: 8px;
+            background: linear-gradient(180deg, #00d2ff, #3a7bd5);
+            border-radius: 5px;
+            animation: visualize 0.5s ease-in-out infinite;
+        }
+
+        .bar:nth-child(1) { height: 20px; animation-delay: 0s; }
+        .bar:nth-child(2) { height: 35px; animation-delay: 0.1s; }
+        .bar:nth-child(3) { height: 25px; animation-delay: 0.2s; }
+        .bar:nth-child(4) { height: 40px; animation-delay: 0.3s; }
+        .bar:nth-child(5) { height: 30px; animation-delay: 0.4s; }
+
+        @keyframes visualize {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(1.5); }
+        }
+
+        .playing .bar {
+            animation-play-state: running;
+        }
+
+        .paused .bar {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body>
+    <!-- Stars Background -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- Nebula Effects -->
+    <div class="nebula nebula-1"></div>
+    <div class="nebula nebula-2"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">🚗 TOYOTA</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#history">History</a></li>
+                <li><a href="#models">Models</a></li>
+                <li><a href="#technology">Technology</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>TOYOTA UNIVERSE</h1>
+        <p>Experience the legacy of innovation, reliability, and excellence that has driven Toyota to become the world's leading automotive manufacturer for over 85 years.</p>
+        <button class="cta-button" onclick="document.getElementById('models').scrollIntoView({behavior: 'smooth'})">Explore Models</button>
+        <button class="rev-button" onclick="playRevSound()">🔊 Hear the Engine</button>
+        <div class="audio-visualizer paused" id="visualizer">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
     </section>
 
-    <div class="content-wrap">
-
-        <div class="info-block">
-            <h2>01 // 2026 WOVEN CITY LAUNCH</h2>
-            <p>As of <span class="highlight">February 2026</span>, Toyota has officially opened the gates of <span class="highlight">Woven City</span> to general visitors. After the first "Weavers" (employees and families) moved in during late 2025, the city has become a living laboratory for 2,000 residents. Every home is powered by a localized hydrogen fuel cell grid, and the streets are divided into three distinct paths: one for fast vehicles, one for micromobility (e-scooters), and one for pedestrians. This is no longer a concept—it is a functioning 175-acre smart city at the base of Mt. Fuji.</p>
+    <!-- History Section -->
+    <section id="history">
+        <h2 class="section-title">Our Cosmic Journey</h2>
+        <div class="history-content">
+            <div class="history-text">
+                <h3>🚀 The Beginning (1937)</h3>
+                <p>Founded by Kiichiro Toyoda, Toyota Motor Corporation began as a spinoff from his father's company Toyota Industries to create automobiles. The company was established on August 28, 1937, and has since grown into a global automotive powerhouse.</p>
+                
+                <h3>🌟 The Toyota Production System</h3>
+                <p>Revolutionizing manufacturing worldwide, TPS (Toyota Production System) introduced concepts like Just-In-Time production and Kaizen (continuous improvement). This philosophy eliminated waste and maximized efficiency, becoming the gold standard in manufacturing.</p>
+                
+                <h3> Global Expansion</h3>
+                <p>From the first Corolla in 1966 to becoming the world's largest automaker, Toyota has sold over 10 million vehicles annually. The company operates in over 170 countries with more than 370,000 employees worldwide.</p>
+                
+                <h3>🔋 Hybrid Revolution</h3>
+                <p>In 1997, Toyota launched the Prius, the world's first mass-produced hybrid vehicle. Today, Toyota has sold over 20 million hybrid vehicles globally, leading the charge toward sustainable mobility.</p>
+            </div>
+            <div class="history-image">
+                <img src="https://images.unsplash.com/photo-1629897048514-3dd74151ae2b?w=800" alt="Toyota Heritage">
+            </div>
         </div>
+    </section>
 
-        <div class="info-block">
-            <h2>02 // THE SUPRA "FINAL EDITION"</h2>
-            <p>Enthusiasts around the world are currently tracking the <span class="highlight">2026 GR Supra MkV Final Edition</span>. Toyota has confirmed that 2026 will be the final production year for the current Supra generation. This special send-off model features a carbon-fiber ducktail spoiler, 19-inch matte black wheels, and a suspension re-tuned specifically for track-day grip. Only <span class="highlight">1,300 units</span> are being produced globally, marking the end of an era for the BMW-partnered sports icon.</p>
+    <!-- Models Section -->
+    <section id="models">
+        <h2 class="section-title">Legendary Models</h2>
+        <div class="models-grid">
+            <div class="model-card">
+                <img src="https://images.unsplash.com/photo-1623869675785-30827d37b545?w=600" alt="Toyota Supra">
+                <div class="model-info">
+                    <h3>Supra</h3>
+                    <p>The legendary sports car that defined a generation. With its powerful inline-6 engine and exceptional handling, the Supra remains an icon of performance.</p>
+                    <div class="specs">
+                        <span class="spec">382 HP</span>
+                        <span class="spec">0-60: 3.9s</span>
+                        <span class="spec">Inline-6</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src="https://images.unsplash.com/photo-1592198084033-aade068bb4f8?w=600" alt="Toyota Camry">
+                <div class="model-info">
+                    <h3>Camry</h3>
+                    <p>America's best-selling sedan for over two decades. Combining reliability, comfort, and efficiency, the Camry sets the standard for midsize sedans.</p>
+                    <div class="specs">
+                        <span class="spec">301 HP</span>
+                        <span class="spec">52 MPG</span>
+                        <span class="spec">Hybrid</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600" alt="Toyota Land Cruiser">
+                <div class="model-info">
+                    <h3>Land Cruiser</h3>
+                    <p>The ultimate go-anywhere vehicle. With over 70 years of heritage, the Land Cruiser conquers the world's toughest terrains with unmatched reliability.</p>
+                    <div class="specs">
+                        <span class="spec">409 HP</span>
+                        <span class="spec">4WD</span>
+                        <span class="spec">V8 Twin-Turbo</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=600" alt="Toyota Prius">
+                <div class="model-info">
+                    <h3>Prius</h3>
+                    <p>The pioneer of hybrid technology. The Prius continues to lead the eco-friendly revolution with exceptional fuel economy and cutting-edge technology.</p>
+                    <div class="specs">
+                        <span class="spec">57 MPG</span>
+                        <span class="spec">Hybrid</span>
+                        <span class="spec">Zero Emissions</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src="https://images.unsplash.com/photo-1551830820-330a71b99659?w=600" alt="Toyota Tacoma">
+                <div class="model-info">
+                    <h3>Tacoma</h3>
+                    <p>The midsize truck that does it all. Whether work or play, the Tacoma delivers legendary reliability and off-road capability.</p>
+                    <div class="specs">
+                        <span class="spec">278 HP</span>
+                        <span class="spec">6,800 lbs</span>
+                        <span class="spec">4x4</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=600" alt="Toyota GR86">
+                <div class="model-info">
+                    <h3>GR86</h3>
+                    <p>Pure driving pleasure. The GR86 offers perfectly balanced rear-wheel-drive dynamics at an accessible price point.</p>
+                    <div class="specs">
+                        <span class="spec">228 HP</span>
+                        <span class="spec">RWD</span>
+                        <span class="spec">Boxer Engine</span>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="info-block">
-            <h2>03 // 2025 SALES RECORDS</h2>
-            <p>In data released in <span class="highlight">January 2026</span>, Toyota maintained its crown as the world's top-selling automaker for the sixth year in a row. Despite global economic shifts and new tariffs, Toyota sold a record-breaking <span class="highlight">10.5 million vehicles</span> in 2025. Hybrid demand in the United States, specifically for the RAV4 and Prius, drove this massive growth. For 2026, Toyota has notified suppliers to prepare for production exceeding 10 million units once again.</p>
+    <!-- Technology Section -->
+    <section id="technology">
+        <h2 class="section-title">Revolutionary Technology</h2>
+        <div class="tech-container">
+            <div class="tech-card">
+                <div class="tech-icon">⚡</div>
+                <h3>Hybrid Synergy Drive</h3>
+                <p>Seamlessly combining electric motors with gasoline engines for optimal efficiency and performance. Over 20 million hybrids sold worldwide.</p>
+            </div>
+
+            <div class="tech-card">
+                <div class="tech-icon">🛡️</div>
+                <h3>Toyota Safety Sense</h3>
+                <p>Advanced suite of safety features including Pre-Collision System, Lane Departure Alert, and Dynamic Radar Cruise Control.</p>
+            </div>
+
+            <div class="tech-card">
+                <div class="tech-icon">🔋</div>
+                <h3>Hydrogen Fuel Cell</h3>
+                <p>The Mirai showcases Toyota's commitment to zero-emission vehicles, producing only water vapor as exhaust.</p>
+            </div>
+
+            <div class="tech-card">
+                <div class="tech-icon">🤖</div>
+                <h3>AI & Connectivity</h3>
+                <p>Toyota Safety Connect, Remote Connect, and AI-powered assistants keeping you connected and safe on every journey.</p>
+            </div>
+
+            <div class="tech-card">
+                <div class="tech-icon"></div>
+                <h3>Carbon Neutrality</h3>
+                <p>Commitment to carbon neutrality by 2050 through electrification, renewable energy, and sustainable manufacturing.</p>
+            </div>
+
+            <div class="tech-card">
+                <div class="tech-icon">🏁</div>
+                <h3>GR Performance</h3>
+                <p>Gazoo Racing division bringing motorsport technology to road cars, developing high-performance vehicles for enthusiasts.</p>
+            </div>
         </div>
+    </section>
 
-        <div class="info-block">
-            <h2>04 // THE NEXT-GEN BATTERY ROADMAP</h2>
-            <p>Toyota is currently in the "Phase 2" implementation of its battery roadmap. By the end of 2026, Toyota aims to reveal six new battery-electric (BEV) models. The big goal remains the <span class="highlight">Solid-State Battery</span>, which is scheduled for commercial use by 2027/28. These batteries are expected to provide over <span class="highlight">620 miles of range</span> and charge from 10% to 80% in less than 10 minutes.</p>
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <h2 class="section-title">Visual Journey</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600" alt="Toyota 1">
+                <div class="gallery-overlay">
+                    <h4>Performance</h4>
+                    <p>Engineered for excellence</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?w=600" alt="Toyota 2">
+                <div class="gallery-overlay">
+                    <h4>Innovation</h4>
+                    <p>Leading the future</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1503376763036-066120622c74?w=600" alt="Toyota 3">
+                <div class="gallery-overlay">
+                    <h4>Heritage</h4>
+                    <p>85+ years of excellence</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600" alt="Toyota 4">
+                <div class="gallery-overlay">
+                    <h4>Reliability</h4>
+                    <p>Built to last</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600" alt="Toyota 5">
+                <div class="gallery-overlay">
+                    <h4>Performance</h4>
+                    <p>Power meets precision</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600" alt="Toyota 6">
+                <div class="gallery-overlay">
+                    <h4>Future</h4>
+                    <p>Mobility for all</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#">📘 Facebook</a>
+            <a href="#">📸 Instagram</a>
+            <a href="#">🐦 Twitter</a>
+            <a href="#">📺 YouTube</a>
+        </div>
+        <p>&copy; 2026 Toyota Universe Fan Site. All rights reserved.</p>
+        <p style="margin-top: 10px; color: #6b7280;">This is an unofficial fan-made website. Toyota and all model names are trademarks of Toyota Motor Corporation.</p>
+    </footer>
+
+    <!-- Audio Element -->
+    <audio id="revSound" preload="auto">
+        <source src="car-rev.mp3" type="audio/mpeg">
+        <!-- Add alternative formats if needed -->
+        <source src="car-rev.ogg" type="audio/ogg">
+        <source src="car-rev.wav" type="audio/wav">
+    </audio>
 
     <script>
-        // Parallax Stars
-        window.addEventListener('scroll', function() {
-            const scroll = window.pageYOffset;
-            document.querySelector('.stars').style.backgroundPositionY = -(scroll * 0.3) + 'px';
+        // Generate Stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 200;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                const size = Math.random() * 3 + 1;
+                const duration = Math.random() * 3 + 2;
+                const opacity = Math.random() * 0.7 + 0.3;
+                
+                star.style.left = x + '%';
+                star.style.top = y + '%';
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.setProperty('--duration', duration + 's');
+                star.style.setProperty('--opacity', opacity);
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Play Rev Sound
+        function playRevSound() {
+            const audio = document.getElementById('revSound');
+            const visualizer = document.getElementById('visualizer');
+            
+            if (audio.paused) {
+                audio.currentTime = 0;
+                audio.play().catch(e => console.log('Audio play failed:', e));
+                visualizer.classList.remove('paused');
+                visualizer.classList.add('playing');
+            } else {
+                audio.pause();
+                visualizer.classList.remove('playing');
+                visualizer.classList.add('paused');
+            }
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Audio ended handler
+        document.getElementById('revSound').addEventListener('ended', function() {
+            document.getElementById('visualizer').classList.remove('playing');
+            document.getElementById('visualizer').classList.add('paused');
+        });
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelectorAll('.nebula');
+            parallax.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.2);
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Initialize
+        createStars();
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.model-card, .tech-card, .gallery-item').forEach((el) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
         });
     </script>
-
 </body>
 </html>
