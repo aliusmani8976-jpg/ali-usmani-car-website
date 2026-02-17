@@ -483,6 +483,46 @@
         .paused .bar {
             animation-play-state: paused;
         }
+
+        /* Creator Signature Watermark */
+        .creator-tag {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #00d2ff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 1001;
+            opacity: 0.8;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.8), 0 0 20px rgba(0, 210, 255, 0.4);
+            transition: all 0.3s ease;
+            pointer-events: auto;
+            cursor: default;
+            background: rgba(10, 14, 39, 0.6);
+            padding: 8px 15px;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .creator-tag:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.6);
+            background: rgba(10, 14, 39, 0.9);
+        }
+
+        /* Mobile Adjustment */
+        @media (max-width: 768px) {
+            .creator-tag {
+                bottom: 10px;
+                right: 50%;
+                transform: translateX(50%);
+                font-size: 0.75rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -735,10 +775,12 @@
     <!-- Audio Element -->
     <audio id="revSound" preload="auto">
         <source src="car-rev.mp3" type="audio/mpeg">
-        <!-- Add alternative formats if needed -->
         <source src="car-rev.ogg" type="audio/ogg">
         <source src="car-rev.wav" type="audio/wav">
     </audio>
+
+    <!-- Creator Signature -->
+    <div class="creator-tag">Designed by Muhammad Abu Ali Usmani</div>
 
     <script>
         // Generate Stars
